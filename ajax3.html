@@ -4,9 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>learn | Ajax 3</title>
+    <title>Ajax 3 | External Api</title>
 </head>
 <body>
-    
+    <button id="button">Load github Users</button>
+    <br><br>
+    <h2>Github users</h2>
+    <div id="users"></div>
+
+    <script>
+        document.getElementById("button").addEventListener("click", loadUsers);
+        function loadUsers() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'https://api.github.com/users', true);
+            xhr.onload = function(){
+                if (this.status == 200) {
+                    var users = JSON.parse(this.responseText);
+                    var output = "";
+                    for (let i in users) {
+                        output += '<ul>' +
+                        '<li>' + users[i].login + '</li>' +
+                        '</ul>';
+                        
+                    }
+
+                    document.getElementById('users').innerHTML = output;
+                }
+            }
+            xhr.send();
+        }
+    </script>
 </body>
 </html>
