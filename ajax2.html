@@ -23,7 +23,8 @@
             xhr.open('GET','user.json', true);
             xhr.onload = function(){
                 if (this.status == 200) {
-                    document.getElementById("user").innerText = this.responseText;
+                    var file = JSON.parse(this.responseText)
+                    document.getElementById("user").innerText = file.name;
                 }
             }
             xhr.send();
