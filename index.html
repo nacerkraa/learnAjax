@@ -8,6 +8,8 @@
 </head>
 <body>
     <button id="button">Text File</button>
+    <br><br>
+    <div id="text"></div>
     <script>
         // Create an event listener
         document.getElementById("button").addEventListener('click', loadText);
@@ -19,6 +21,9 @@
             xhr.onload = function() {
                 if (this.status == 200) {
                     console.log(xhr.responseText);
+                    document.getElementById('text').innerText = xhr.responseText;
+                }else if (this.status == 404) {
+                    document.getElementById('text').innerText = 'not found!';
                 }
             }
             
