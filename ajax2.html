@@ -23,8 +23,15 @@
             xhr.open('GET','user.json', true);
             xhr.onload = function(){
                 if (this.status == 200) {
-                    var file = JSON.parse(this.responseText)
-                    document.getElementById("user").innerText = file.name;
+                    var user = JSON.parse(this.responseText)
+                    var output = '';
+                    output += '<ul>' +
+                        '<li>' + user.id + '</li>' +
+                        '<li>' + user.name + '</li>' +
+                        '<li>' + user.email + '</li>' +
+                        '</ul>';
+                    console.log(output);
+                    document.getElementById("user").innerHTML = output;
                 }
             }
             xhr.send();
