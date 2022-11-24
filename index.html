@@ -12,8 +12,21 @@
         // Create an event listener
         document.getElementById("button").addEventListener('click', loadText);
         function loadText() {
-            console.log("button clicked....");
+            // Create xhr request
+            var xhr = new XMLHttpRequest();
+            // Open - type, url/file, async
+            xhr.open('GET','sample.txt', true);
+            xhr.onload = function() {
+                if (xhr.status) {
+                    console.log(xhr.responseText);
+                }
+            }
+            
+            // send request
+            xhr.send();
         }
     </script>
+
+    
 </body>
 </html>
