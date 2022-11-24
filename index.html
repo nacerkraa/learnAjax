@@ -7,6 +7,13 @@
     <title>Learn | Ajax </title>
 </head>
 <body>
-    <button>Text File</button>
+    <button id="button">Text File</button>
+    <script>
+        // Create an event listener
+        document.getElementById("button").addEventListener('click', loadText);
+        function loadText() {
+            console.log("button clicked....");
+        }
+    </script>
 </body>
 </html>
